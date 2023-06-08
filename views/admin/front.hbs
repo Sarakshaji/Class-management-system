@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+  <title>Logout</title>
+
+</head>
+
+<body>
+  <section>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="/admin/teacher">Teachers</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="/admin/front">students</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="/admin/add-student">Add student</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="/admin/add-notes">Add Notes</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="/admin/assignment">Assignment</a>
+            </li>
+
+
+
+          </ul>
+          <div class="dropdown">
+            {{#if admin}}
+            <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+              data-bs-toggle="dropdown" aria-expanded="false">
+              {{admin.username}}
+            </a>
+            {{else}}
+            <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+              data-bs-toggle="dropdown" aria-expanded="false">
+              Account
+            </a>
+            {{/if}}
+
+
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+              <li><a class="dropdown-item" href="/admin/logout">logout</a></li>
+
+            </ul>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </section>
+  <section>
+    <div col-md-6>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">No</th>
+            <th scope="col">First Name</th>
+            <th scope="col">Last Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">delete</th>
+            <th scope="col">Change</th>
+            <th scope="col">image</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each product}}
+          <tr>
+            <th scope="row">1</th>
+            <td>{{this.firstname}}</td>
+            <td>{{this.lastname}}</td>
+            <td>{{this.email}}</td>
+            <td><a href="/admin/delete/{{this._id}}" class="btn btn-success"
+                onclick="return confirm('are you sure you want delete {{this.firstname}}')">Delete</a></td>
+            <td><a href="/admin/edit/{{this._id}}" class="btn btn-success">Edit</a></td>
+            <td><img style="width:50px;height:50px" src="/student-images/{{this._id}}.jpg" alt=""></td>
+          </tr>
+          {{/each}}
+
+
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+
+
+  <!-- Optional JavaScript; choose one of the two! -->
+
+  <!-- Option 1: Bootstrap Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+
+  <!-- Option 2: Separate Popper and Bootstrap JS -->
+  <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+    -->
+</body>
+
+</html>
